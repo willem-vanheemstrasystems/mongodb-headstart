@@ -1,0 +1,22 @@
+{
+  "name": "mongodb-headstart",
+  "version": "1.0.0",
+  "description": "MongoDB Headstart",
+  "main": "servers/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willem-vanheemstrasystems/mongodb-headstart.git"
+  },
+  "author": "Willem van Heemstra <willem@vanheemstrasystems.com> (http://vanheemstrasystems.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/willem-vanheemstrasystems/mongodb-headstart/issues"
+  },
+  "homepage": "https://github.com/willem-vanheemstrasystems/mongodb-headstart#readme",
+  "dependencies": {
+    "mongodb": "^2.0.40"
+  }
+}
