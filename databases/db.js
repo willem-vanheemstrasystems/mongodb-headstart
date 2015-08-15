@@ -133,7 +133,7 @@ db.open(function(err, conn){
 });
 */
 
-/* UPDATING AN PARTICULAR FIELD OF AN ENTRY */
+/* UPDATING AN PARTICULAR FIELD OF AN ENTRY
 // open database connection
 db.open(function(err, conn){
 	// select the collection
@@ -152,4 +152,43 @@ db.open(function(err, conn){
 	    });
     });
 });
+*/
 
+/* DELETING AN ENTIRE ENTRY
+// open database connection
+db.open(function(err, conn){
+	// select the collection
+	db.collection('myNewCollection', function(err, collection) {
+		// remove a document
+		collection.remove({num: 1}, function(err) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				console.log('Successfully removed');
+			}
+			db.close();
+		});
+	});
+});
+*/
+
+/* DELETING AN ENTIRE ENTRY */
+// open database connection
+db.open(function(err, conn){
+	// select the collection
+	db.collection('myNewCollection', function(err, collection) {
+		// find and remove
+		// NOTE: findAndRemove returns the document as it stood BEFORE the modification!!
+		collection.findAndRemove({num: 0}, [['_id', 'asc']], function(err, result) {
+		   if (err) {
+			   console.log(err);
+		   }
+		   // log the affected document
+		   else {
+			   console.log(result);
+		   }
+		   db.close({});
+		});
+	});
+});
