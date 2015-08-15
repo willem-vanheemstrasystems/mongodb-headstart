@@ -173,7 +173,7 @@ db.open(function(err, conn){
 });
 */
 
-/* DELETING AN ENTIRE ENTRY */
+/* DELETING AN ENTIRE ENTRY
 // open database connection
 db.open(function(err, conn){
 	// select the collection
@@ -192,3 +192,20 @@ db.open(function(err, conn){
 		});
 	});
 });
+*/
+
+/* DROPPING AN ENTIRE COLLECTION
+// open database connection
+db.open(function(err, conn){
+	// drop a collection
+	db.dropCollection('myNewCollection', function(err, result) {
+        if(err) {
+	        console.log(err);
+        }
+        else {
+	        console.log(result);
+        }
+		db.close();
+	});
+});
+*/
