@@ -95,7 +95,7 @@ db.open(function(err, conn){
 });
 */
 
-/* UPSERTING AN ENTIRE ENTRY */
+/* UPSERTING AN ENTIRE ENTRY
 // open database connection
 db.open(function(err, conn){
 	// select the collection
@@ -112,7 +112,24 @@ db.open(function(err, conn){
 		});
 	});
 });
+*/
 
-
+/* UPDATING AN PARTICULAR FIELD OF AN ENTRY */
+// open database connection
+db.open(function(err, conn){
+	// select the collection
+	db.collection('myNewCollection', function(err, collection) {
+		// update one of the documents
+		collection.update({num: 3}, {$set: {desc: 'favourite number'}}, {safe: true}, function(err) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				console.log('Successfully updated');
+			}
+			db.close();
+		});
+	});
+});
 
 
