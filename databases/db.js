@@ -76,7 +76,7 @@ db.open(function(err, conn){
 });
 */
 
-/* UPDATING AN ENTIRE ENTRY */
+/* UPDATING AN ENTIRE ENTRY
 // open database connection
 db.open(function(err, conn){
 	// select the collection
@@ -88,6 +88,25 @@ db.open(function(err, conn){
 			}
 			else {
 				console.log('Successfully updated');
+			}
+			db.close();
+		});
+	});
+});
+*/
+
+/* UPSERTING AN ENTIRE ENTRY */
+// open database connection
+db.open(function(err, conn){
+	// select the collection
+	db.collection('myNewCollection', function(err, collection) {
+		// upsert one of the documents
+		collection.update({num: 8}, {num: 7}, {safe: true, upsert: true}, function(err) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				console.log('Successfully upserted');
 			}
 			db.close();
 		});
