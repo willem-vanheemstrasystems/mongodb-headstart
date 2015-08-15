@@ -44,7 +44,7 @@ db.open(function(err, conn){
 });
 */
 
-/* FIND ALL DOCUMENT WITH num = 2 */
+/* FIND ALL DOCUMENT WITH num = 2
 // open database connection
 db.open(function(err, conn){
 	// select the collection
@@ -58,3 +58,42 @@ db.open(function(err, conn){
 		});
 	});
 });
+*/
+
+/* FIND ALL DOCUMENT WITH num greater than 1 but less than 4, limit to 10 results, sort in descending order
+// open database connection
+db.open(function(err, conn){
+	// select the collection
+	db.collection('myNewCollection', function(err, collection) {
+		// select all the documents where num is greater than 1 but less than 4 in the collection, limit to 10 results, sort in descending order
+		collection.find({num: {$gt: 1, $lt: 4}}, {limit: 10}, {sort: [['num', 'desc']]}).toArray(function(err, result) {
+			// log the data
+			console.log(result);
+			// close the connection
+			db.close();
+		});
+	});
+});
+*/
+
+/* UPDATING AN ENTIRE ENTRY */
+// open database connection
+db.open(function(err, conn){
+	// select the collection
+	db.collection('myNewCollection', function(err, collection) {
+		// update one of the documents
+		collection.update({num: 2}, {num: 10}, {safe: true}, function(err) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				console.log('Successfully updated');
+			}
+			db.close();
+		});
+	});
+});
+
+
+
+
